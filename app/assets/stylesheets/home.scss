@@ -5,3 +5,29 @@
 h1.green {
   color: green;
 }
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footericon{
+  padding-top: 10px;
+  text-align: center;
+}
+
+#mostlike{
+  overflow: scroll;
+  height: 640px;
+}

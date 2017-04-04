@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'cowsay', '~> 0.3.0'
+gem 'faker', github: 'stympy/faker'
+gem 'bootstrap-glyphicons'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,6 +44,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'interactive_editor'
+  gem "rails-erd"
+  gem 'awesome_print'
+  gem 'hirb'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
