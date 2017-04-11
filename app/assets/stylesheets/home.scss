@@ -1,33 +1,64 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1.green {
-  color: green;
+*{
+  font-family: Pacifico;
 }
+
 html {
   position: relative;
   min-height: 100%;
+
 }
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 30px;
+  height: 35px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
 .footericon{
-  padding-top: 10px;
+  padding-top: 5px;
   text-align: center;
+  text-shadow: 1px 1px grey;
 }
 
 #mostlike{
   overflow: scroll;
-  height: 640px;
+  max-height: 600px;
+}
+
+
+.alert-info{
+  color: black !important;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.mb-1{
+  font-family: sans-serif;
+}
+
+.text-muted{
+  color: grey !important;
+  font-size: 10px;
+
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(2.1); }
+
+.flash-notice{
+  font-size: 20px;
+  color: blue;
+  font-family: impact;
+}
+
+.alert-notice{
+  font-size: 20px;
+  color: red;
+  font-family: impact;
 }

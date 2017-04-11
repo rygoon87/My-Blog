@@ -1,0 +1,44 @@
+<div class="container">
+<div class="col-md-12">
+<div class="row">
+
+  <div class="col-md-3">
+  </div>
+
+
+  <div class="col-md-6">
+    <center>
+      <h1>✈️ Create New Post ✈️</h1>
+      <% if @post.errors.any? %>
+          <% @post.errors.full_messages.each do |msg| %>
+              <h2 style="color:red; font-family: impact">☠️<%= msg %>☠️</h2>
+          <% end %>
+      <% end %>
+      <div class="alert alert-info">
+
+            <%= form_for @post do |f| %>
+              <div>
+                <%= f.label :title %>
+                <br>
+                <%= f.text_area :title , class:'title_input', size: "45%x1%", placeholder: 'Dont forget to put a title here...👈' %>
+              </div>
+              <br>
+              <div class="bloginputbox">
+                <%= f.label :body %>
+                <br>
+                <%= f.text_area :body , class:'blog_input', placeholder: 'Write whatever you want here...🤔', size: "45%x20%"%>
+              </div>
+              <br>
+              <div class="grow"><%= f.submit %></div>
+
+            <% end %>
+      </div>
+    </center>
+  </div>
+
+  <div class="col-md-3">
+  </div>
+
+</div>
+</div>
+</div>

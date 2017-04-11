@@ -1,0 +1,43 @@
+<div class="container">
+
+
+<div class="alert alert-info">
+
+
+<center>
+<div class="mb-1">
+<h1>Sign Up</h1>
+</div>
+</center>
+
+<strong><%= @user.errors.full_messages.join(', ') %></strong>
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <br>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  <br>
+  <%= f.submit 'Sign Up', class: 'btn btn-priamry' %>
+  <br>
+  <br>
+<% end %>
+
+</div>
+</div>

@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyBlog</title>
+    <title>My Blog</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <style media="screen">
+    /*.grow { transition: all .2s ease-in-out; }
+    .grow:hover { transform: scale(2.1); }*/
+
+    footer{
+        word-spacing: 30px;
+      }
+    .blogimg{
+      opacity: 0.7;
+    }
+    body{
+      /*background-color: rgb(255, 242, 230);*/
+      /*background-image:url(<%= asset_path('bg.jpg')%>);
+      background-repeat: no-repeat;
+      background-attachment: fixed;*/
+    }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
   </head>
 
   <body>
@@ -21,18 +40,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img style="border-radius: 100%; width: 25px;" alt="Brand" src="<%= asset_path( 'logo.jpg' ) %>"></a>
+          <a class="navbar-brand grow" href="/"><img style="border-radius: 100%; width: 25px;" alt="Brand" src="<%= asset_path( 'logo.jpg' ) %>"></a>
       </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/posts/new">New Post</a></li>
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Log In</a></li>
-            <li><a href="#">Sign Up</a></li>
+          <% if user_signed_in? %>
+          <% current_user = User.find_by_id session[:user_id] %>
+          <li><span style="color: white; position: relative; top: 15px;">Hello, <%= current_user.first_name %> ☑️You are signed in ☑️ </li></span>
+          <li><a href="/sessions" data-method = "delete">Sign Out</a></li>
+           <% else %>
+            <li><a href="/sessions/new">Log In</a></li>
+            <li><a href="/users/new">Sign Up</a></li>
+          <% end %>
           </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
@@ -49,15 +76,29 @@
     <br/>
     <br/>
 
+    <center>
+    <% if flash[:notice] %>
+        <div class="flash-notice"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+        <div class="alert-notice"><%= flash[:alert] %></div>
+      <% end %>
+    </center>
 
     <%= yield %>
-    <!-- <div class="container-fluid"> -->
+
+    <br/>
+    <br/>
+
       <footer class="footer">
       <div class="container">
         <div class="footericon">
 
-
-      <span class="glyphicon glyphicon-envelope" style="color:#ffffff" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-envelope grow" style="color:#ffffff" aria-hidden="true"></span>
+      <span class="fa fa-facebook-official grow" style="color: #ffffff" aria-hidden = "true"></span>
+      <span class="fa fa-instagram grow" style="color: #ffffff" aria-hidden = "true"></span>
+      <span class="fa fa-google-plus grow" style="color: #ffffff" aria-hidden = "true"></span>
+      <span class="fa fa-twitter grow" style="color: #ffffff" aria-hidden = "true"></span>
+      <span class="fa fa-github-alt grow" style="color: #ffffff" aria-hidden = "true"></span>
 
       </div>
       </div>

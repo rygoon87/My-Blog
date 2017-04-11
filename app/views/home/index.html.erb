@@ -1,100 +1,119 @@
-<div class="container-fluid">
+<div class="body container-fluid">
 <div class="col-md-12">
+  <div class="row">
 
+  <!-- last blog post -->
   <div class="col-md-8">
-    <img src="<%= asset_path( 'pic1.jpg' ) %>" class="img-responsive img-rounded"/>
-    <div class="well">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <a href="<%= home_show_path(@last_post) %>" style="text-decoration: none;">
+    <img src="<%= asset_path( 'img13.jpg' ) %>" class="blog-img img-responsive img-rounded blogimg"/></a>
+    <div class="container-fluid">
+    <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true">
+    <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
     </div>
+    <a href="<%= home_show_path(@last_post) %>" style="text-decoration: none;">
+    <div class="alert alert-info">
+      <center><h1><%= @last_post.title %></h1></center>
+      <%= truncate(@last_post.body, length: 150) %>
+      <hr>
+      <p>Arthur: <%= @last_post.user.full_name %></p>
+      <h5> <%= @last_post.created_at %> </h5>
+    </div>
+    </a>
   </div>
 
 
 
-  <div class="col-md-4 hidden-md hidden-sm hidden-xs" id="mostlike">
+  <!-- SideBar -->
+  <div class="col-md-4 hidden-md hidden-sm hidden-xs ">
 
     <h1 class="blue" style="text-align:center; font-size: 25px; font-family: impact;"><span class="glyphicon glyphicon-thumbs-up" style="color: SkyBlue" aria-hidden="true"></span><span style="font-size: 30px;">  Most Liked:</h1></span>
 
-          <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Blog Entry: </h5>
-          <small>3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small>Arthur: Richard Wang</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="list-group" id="mostlike">
+      <a href="" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">Blog Entry: </h5>
           <small class="text-muted">3 days ago</small>
         </div>
         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Arthur: Richard Wang</small>
+        <small class="text-muted">Author: <%= @author %></small>
       </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">Blog Entry: </h5>
           <small class="text-muted">3 days ago</small>
         </div>
         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Arthur: Richard Wang</small>
+        <small class="text-muted">Author: <%= @author %></small>
       </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">Blog Entry: </h5>
           <small class="text-muted">3 days ago</small>
         </div>
         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Arthur: Richard Wang</small>
+        <small class="text-muted">Author: <%= @author %></small>
       </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">Blog Entry: </h5>
           <small class="text-muted">3 days ago</small>
         </div>
         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Arthur: Richard Wang</small>
+        <small class="text-muted">Author: <%= @author %></small>
       </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">Blog Entry: </h5>
           <small class="text-muted">3 days ago</small>
         </div>
         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Arthur: Richard Wang</small>
+        <small class="text-muted">Author: <%= @author %></small>
       </a>
+
       </div>
+    </div>
 
   </div>
-
 </div>
 
+
+<!-- Blog Post Display -->
 <div class="col-md-12">
+  <% @posts.each_slice(3) do |group| %>
+    <div class="row">
+      <% group.each do |post| %>
+        <div class="col-md-4">
+          <a href="<%= home_show_path(post) %>" style="text-decoration: none;">
+          <!-- blog image -->
+          <% image = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img7.jpg", "img12.jpg", "img9.jpg", "img10.jpg", "img12.jpg" , "img15.jpg "].sample%>
+
+          <img class = "img-responsive img-rounded blogimg" src = "assets/<%= image %>"></a>
+
+          <div class="container-fluid">
+          <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"><span style="color:black; font-size: 30px; font-weight: bold;"><%= rand(100..999) %></span></span>
+          <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
+          </div>
+          <a href="<%= home_show_path(post) %>" style="text-decoration: none;">
+          <div class="alert alert-info">
+              <center><h1><%= post.title %></h1></center>
+              <%= truncate( post.body, length: 150) %>
+              <hr>
+            <p>Arthur: <%= post.user.full_name %></p>
+            <h5> <%= post.created_at %> </h5>
+          </div>
+        </a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
   <div class="col-md-4">
-    <h1 class="green">HELLO</h1>
-    <div class="alert alert-danger">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <h1 class="green">HELLO</h1>
-    <div class="alert alert-danger">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <h1 class="green">HELLO</h1>
-    <div class="alert alert-danger">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
-  </div>
 
 
+
+  </div>
 
 
 </div>
-
-
-
 </div>
