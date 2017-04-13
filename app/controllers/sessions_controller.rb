@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email params[:email]
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'YOU ARE NOW IN THIS 💩'
+      redirect_to root_path, notice: 'YOU ARE NOW LOGGGGGGEDD INNNNN 👍'
     else
-      flash.now[:alert] = 'EH....TRY AGAIN☠️'
+      flash.now[:alert] = '☠️EH....TRY AGAIN☠️'
       render :new
     end
   end

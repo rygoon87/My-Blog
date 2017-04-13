@@ -2,15 +2,17 @@ Rails.application.routes.draw do
 
   get('/about', { to: 'about#index' })
   get('/contact', { to: 'contact#index' })
-  get('home/:id', { to: 'home#show', as: 'home_show'})
 
-  resources :posts
-  
+
+  resources :posts do
+  resources :reviews, only: [:create, :destroy]
+end
+
 
   resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create,] do
+  resources :sessions, only: [:new, :create, :edit] do
      delete :destroy, on: :collection
    end
 
-  root "home#index"
+  root "posts#index"
 end

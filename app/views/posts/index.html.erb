@@ -4,13 +4,13 @@
 
   <!-- last blog post -->
   <div class="col-md-8">
-    <a href="<%= home_show_path(@last_post) %>" style="text-decoration: none;">
+    <a href="<%= post_path(@last_post) %>" style="text-decoration: none;">
     <img src="<%= asset_path( 'img13.jpg' ) %>" class="blog-img img-responsive img-rounded blogimg"/></a>
     <div class="container-fluid">
     <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true">
     <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
     </div>
-    <a href="<%= home_show_path(@last_post) %>" style="text-decoration: none;">
+    <a href="<%= post_path(@last_post) %>" style="text-decoration: none;">
     <div class="alert alert-info">
       <center><h1><%= @last_post.title %></h1></center>
       <%= truncate(@last_post.body, length: 150) %>
@@ -83,7 +83,7 @@
     <div class="row">
       <% group.each do |post| %>
         <div class="col-md-4">
-          <a href="<%= home_show_path(post) %>" style="text-decoration: none;">
+          <a href="<%= post_path(post) %>" style="text-decoration: none;">
           <!-- blog image -->
           <% image = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img7.jpg", "img12.jpg", "img9.jpg", "img10.jpg", "img12.jpg" , "img15.jpg "].sample%>
 
@@ -93,13 +93,13 @@
           <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"><span style="color:black; font-size: 30px; font-weight: bold;"><%= rand(100..999) %></span></span>
           <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
           </div>
-          <a href="<%= home_show_path(post) %>" style="text-decoration: none;">
+          <a href="<%= post_path(post) %>" style="text-decoration: none;">
           <div class="alert alert-info">
               <center><h1><%= post.title %></h1></center>
               <%= truncate( post.body, length: 150) %>
               <hr>
             <p>Arthur: <%= post.user.full_name %></p>
-            <h5> <%= post.created_at %> </h5>
+            <p>Post Created On: <%= post.created_at %> </p>
           </div>
         </a>
         </div>

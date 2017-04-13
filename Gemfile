@@ -38,6 +38,7 @@ gem 'cowsay', '~> 0.3.0'
 gem 'faker', github: 'stympy/faker'
 gem 'bootstrap-glyphicons'
 gem "font-awesome-rails"
+gem 'cancancan', '~> 1.10'
 
 
 group :development, :test do
