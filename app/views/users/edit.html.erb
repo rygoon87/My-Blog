@@ -1,0 +1,47 @@
+<div class="container">
+<div class="col-md-12">
+
+  <div class="col-md-3">
+  </div>
+
+    <div class="col-md-6">
+    <div class="alert alert-info">
+
+
+      <center>
+      <div class="mb-1">
+      <h1 class="pfont titletext">⛏Edit Your User Here🔧</h1>
+      </div>
+
+
+
+      <%= form_for(@user) do |f| %>
+      <%= @user.errors.full_messages.join(', ') %>
+      <hr>
+      <div class="pfont" style="font-size: 20px;"><%= f.label :first_name %></div>
+      <%= f.text_field :first_name, class: 'form-control' %>
+      <hr>
+      <div class="pfont" style="font-size: 20px;"><%= f.label :last_name %></div>
+      <%= f.text_field :last_name, class: 'form-control' %>
+      <hr>
+      <div class="pfont" style="font-size: 20px;"><%= f.label :email %></div>
+      <%= f.email_field :email, class: 'form-control' %>
+      <hr>
+      <div class="pfont" style="font-size: 20px;"><%= f.label :password %></div>
+      <%= f.password_field :password, class: 'form-control',  placeholder: 'Leave it blank unless you want to update your password👈' %>
+      <hr>
+      <div class="pfont" style="font-size: 20px;"><%= f.label :password_confirmation, "Password Confirmation" %></div>
+      <%= f.password_field :password_confirmation, class: 'form-control',  placeholder: 'Dont forget repeat your new password👈' %>
+      <br>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+
+      </div>
+      </div>
+      </center>
+      <div class="col-md-3">
+      </div>
+
+      </div>
+      </div>

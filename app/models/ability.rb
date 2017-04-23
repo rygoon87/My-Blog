@@ -6,7 +6,6 @@ class Ability
       user ||= User.new
 
       if user.is_admin?
-
         can :manage, :all
       end
 
@@ -14,5 +13,8 @@ class Ability
         post.user == user
       end
 
-  end
+      can [:show, :destroy, :edit], User, :id => user.id
+
+    end
+
 end

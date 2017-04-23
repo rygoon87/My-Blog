@@ -8,18 +8,21 @@
     <img src="<%= asset_path( 'img13.jpg' ) %>" class="blog-img img-responsive img-rounded blogimg"/></a>
     <div class="container-fluid">
     <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true">
-    <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
+    <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
     </div>
     <a href="<%= post_path(@last_post) %>" style="text-decoration: none;">
     <div class="alert alert-info">
-      <center><h1><%= @last_post.title %></h1></center>
+      <center><h1 class="pfont titletext" style="width: 50%;"><%= @last_post.title %></h1></center>
+      <br>
       <%= truncate(@last_post.body, length: 150) %>
       <hr>
-      <p>Arthur: <%= @last_post.user.full_name %></p>
-      <h5> <%= @last_post.created_at %> </h5>
+      <p>Written By: <strong><%= @last_post.user.full_name %></strong></p>
+      <p>Post Created On: <strong><%= @last_post.created_at %></strong></p>
+      <p>Total Reviews: <strong><%= @last_post.reviews.count %></strong></p>
     </div>
     </a>
   </div>
+
 
 
 
@@ -29,47 +32,24 @@
     <h1 class="blue" style="text-align:center; font-size: 25px; font-family: impact;"><span class="glyphicon glyphicon-thumbs-up" style="color: SkyBlue" aria-hidden="true"></span><span style="font-size: 30px;">  Most Liked:</h1></span>
 
     <div class="list-group" id="mostlike">
-      <a href="" class="list-group-item list-group-item-action flex-column align-items-start ">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Blog Entry: </h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Author: <%= @author %></small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Blog Entry: </h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Author: <%= @author %></small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Blog Entry: </h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Author: <%= @author %></small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Blog Entry: </h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Author: <%= @author %></small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">Blog Entry: </h5>
-          <small class="text-muted">3 days ago</small>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small class="text-muted">Author: <%= @author %></small>
-      </a>
+      <div class="list-group-item list-group-item-action flex-column align-items-start" >
+      <% @posts.each do |post| %>
 
+              <a href="<%= post_path(post) %>" style="text-decoration: none;">
+                  <center><h2>
+                    <p class="pfont titletext"><%= post.title %></p>
+                    <div class="fa fa-plane" style="color: SkyBlue; font-size: 20px;" aria-hidden="true"><span style="color:black; font-size: 20px; font-weight: bold;"><%= rand(100..999) %></span></div>
+                  </h2></center>
+
+                  <p style="color:black;"><%= truncate( post.body, length: 150) %></p>
+
+                <p>Written By: <strong><%= post.user.full_name %></strong></p>
+                <p>Post Created On: <strong><%= post.created_at %></strong></p>
+                <p>Total Reviews: <strong><%= post.reviews.count %></strong></p>
+                <hr>
+            </a>
+      <% end %>
+      </div>
       </div>
     </div>
 
@@ -81,25 +61,28 @@
 <div class="col-md-12">
   <% @posts.each_slice(3) do |group| %>
     <div class="row">
+      <hr>
       <% group.each do |post| %>
         <div class="col-md-4">
           <a href="<%= post_path(post) %>" style="text-decoration: none;">
-          <!-- blog image -->
+
           <% image = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img7.jpg", "img12.jpg", "img9.jpg", "img10.jpg", "img12.jpg" , "img15.jpg "].sample%>
 
           <img class = "img-responsive img-rounded blogimg" src = "assets/<%= image %>"></a>
 
           <div class="container-fluid">
           <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"><span style="color:black; font-size: 30px; font-weight: bold;"><%= rand(100..999) %></span></span>
-          <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
           </div>
           <a href="<%= post_path(post) %>" style="text-decoration: none;">
           <div class="alert alert-info">
-              <center><h1><%= post.title %></h1></center>
+              <center><h1 class="pfont titletext"><%= post.title %></h1></center>
+              <br>
               <%= truncate( post.body, length: 150) %>
               <hr>
-            <p>Arthur: <%= post.user.full_name %></p>
-            <p>Post Created On: <%= post.created_at %> </p>
+            <p>Written By: <strong><%= post.user.full_name %></strong></p>
+            <p>Post Created On: <strong><%= post.created_at %></strong> </p>
+            <p>Total Reviews: <strong><%= post.reviews.count %></strong></p>
           </div>
         </a>
         </div>

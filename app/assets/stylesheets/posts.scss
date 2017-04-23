@@ -6,10 +6,13 @@
 
 }
 
+
+
 .blog_input{
   resize: none !important;
   overflow: scroll !important;
   font-family: sans-serif;
+
 }
 .title_input{
   resize: none !important;
@@ -17,7 +20,7 @@
 }
 
 
-*{
+.pfont {
   font-family: Pacifico;
 }
 
@@ -47,21 +50,23 @@ body {
 #mostlike{
   overflow: scroll;
   max-height: 600px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 #reviewmsg{
   overflow: scroll;
-  max-height: 300px;
+  max-height: 400px;
+
 }
 
 .alert-info{
   color: black !important;
   font-size: 12px;
-  font-family: sans-serif;
 }
 
 .mb-1{
-  font-family: sans-serif;
+  text-align: center;
 }
 
 .text-muted{
@@ -73,6 +78,8 @@ body {
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(2.1); }
 
+.faded:hover{ opacity: 0.7}
+
 .flash-notice{
   font-size: 20px;
   color: blue;
@@ -83,4 +90,36 @@ body {
   font-size: 20px;
   color: red;
   font-family: impact;
+}
+
+.span3{
+    height: 200px !important;
+    overflow: scroll;
+}
+
+
+th {
+  color: white;
+  background-color: black;
+}
+
+.titletext{
+  color: skyblue;
+  border-radius: 50%;
+  background-color: black;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 10px darkblue;
+  box-shadow: 10px 10px 39px -5px rgba(117,115,135,1);
+}
+
+.titletext:hover{
+    text-shadow: 1px 1px 2px white, 0 0 25px red, 0 0 10px black;
+}
+
+.msg{
+  height: 50%;
+  width: 50%;
+}
+
+.modalbox{
+  text-align: center;
 }

@@ -10,13 +10,10 @@
   </div>
 
     <div class="col-md-6">
+      <center><h1 class="titletext">👇Sign Up Here👇</h1></center>
+      <br>
     <div class="alert alert-info">
     <center>
-
-    <h1>👇Sign Up Here👇</h1>
-
-    </center>
-
     <%= form_for @user do |f| %>
       <div class="form-group">
         <%= f.label :first_name %>
@@ -40,7 +37,6 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       <br>
-      <center>
       <div class="grow">
         <span style="color:white;"><%= f.submit 'Sign Up',class:'btn btn-priamry' %></style>
           </div>

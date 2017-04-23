@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
 
 
       if @review.save
-        redirect_to post_path(@post), notice: 'Review Created!👍'
+        redirect_to post_path(@post), notice: 'Review Created!👍' 
       else
         flash.now[:notice] = 'Review NOT CREATED☠️'
         render 'posts/show'
@@ -18,9 +18,15 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-      review = Review.find(params[:id])
-      review.destroy
-      redirect_to post_path(review.post), notice: 'Review Deleted YOOOO!!!'
+      @review = Review.find(params[:id])
+      @review.destroy
+      redirect_to post_path(@review.post), notice: 'Review Deleted YOOOO!!!'
     end
 
+
+    def admin_destroy
+      review = Review.find(params[:id])
+      review.destroy
+      redirect_to admin_dashboard_index_path, notice: 'Review Deleted YOOOO!!! '
+    end
 end

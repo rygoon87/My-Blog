@@ -8,7 +8,7 @@
 
   <div class="col-md-6">
     <center>
-      <h1>✈️ Create New Post ✈️</h1>
+      <h1 class="pfont titletext">✈️ Create New Post ✈️</h1>
       <% if @post.errors.any? %>
           <% @post.errors.full_messages.each do |msg| %>
               <h2 style="color:red; font-family: impact">☠️<%= msg %>☠️</h2>
@@ -18,18 +18,22 @@
 
             <%= form_for @post do |f| %>
               <div>
-                <%= f.label :title %>
+                <span style="font-size:20px;"><%= f.label :title %>:</span>
                 <br>
                 <%= f.text_area :title , class:'title_input', size: "45%x1%", placeholder: 'Dont forget to put a title here...👈' %>
               </div>
               <br>
               <div class="bloginputbox">
-                <%= f.label :body %>
+                <span style="font-size: 20px;"<%= f.label :body %>:</span>
                 <br>
                 <%= f.text_area :body , class:'blog_input', placeholder: 'Write whatever you want here...🤔', size: "45%x20%"%>
               </div>
               <br>
-              <div class="grow"><%= f.submit %></div>
+              <br>
+              <div class="grow pfont">
+                <span style="color:white;"><%= f.submit 'Submit',class:'btn btn-priamry' %></style>
+                  </div>
+                  <br>
 
             <% end %>
       </div>

@@ -5,30 +5,35 @@
       </div>
       <div class="col-md-6">
 
-      <center><h1><%= @post.title %></h1></center>
+      <center><h1 class="pfont titletext"><%= @post.title %></h1></center>
       <br>
       <img src="<%= asset_path( 'img15.jpg' ) %>" class="img-responsive img-rounded blogimg"/>
         <div class="container-fluid">
         <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true">
-        <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"></span>
+        <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
         </div>
           <div class="alert alert-info">
-          <p class="mb-1"><%= @post.body %></p>
-          <p>Arthur: <%= @post.user.full_name %></p>
+          <center><p style="font-size: 15px; font-weight: bold;"><%= @post.body %></p></center>
+          <hr>
+          <p>Arthur: <strong><%= @post.user.full_name.titleize %></strong></p>
           <p>Post Created On:<%= @post.created_at %></p>
           </div>
 
           <hr>
+            <% if can? :edit, @post %>
+            <div class="pull-left grow pfont" style="color: skyblue; font-weight: bold;">
+            <%= button_to 'Edit', edit_post_path(@post), :method => :get %>
+          </div>
+            <% end %>
 
-          <% if can? :edit, @post %>
-          <%= link_to 'Edit', edit_post_path(@post) %>
-          <% end %>
+            <% if can? :destroy, @post %>
+            <div class="pull-right grow pfont" style="color: skyblue; font-weight: bold;">
+            <%= button_to "Delete", post_path(@post), :method => :delete, data: { confirm: 'Are you freakin sure?🤔' } %>
+          </div>
+              <% end  %>
 
-          <% if can? :destroy, @post %>
-          <%= link_to 'Delete', post_path(@post),
-                                method: :delete,
-                                data: { confirm: 'Are you freakin sure?🤔' } %>
-            <% end  %>
+              <br>
+              <br>
 
 
       </div>
@@ -38,37 +43,40 @@
 
         <hr>
 
-        <h2>Reviews</h2>
+        <center><h2 class="pfont titletext" style="width: 35%;">Reviews</h2></center>
 
-
-
-              <%= @review.errors.full_messages.join(', ') %>
-              <%# action=/questions/:question_id/answers %>
               <%= form_for [@post, @review] do |f| %>
-                <%= f.text_area :body , size: "45%x5%", class:'blog_input'%>
+              <% if !user_signed_in? %>
+                <hr>
+                <center><p style="font-weight: bold; font-size: 20px; text-shadow: 1px 1px 2px white, 0 0 25px red, 0 0 10px red;">✍️Please Sign Up or Log In to Write Reviews</p></center>
+              <% end %>
+
+              <% if user_signed_in? %>
+                <center><%= f.text_area :body , size: "45%x5%", class:'blog_input'%></center>
                 <br/>
-                <%= f.submit %>
+                  <center>
+                  <span class="pfont" style="color:white;"><%= f.submit 'Create Review',class:'btn btn-priamry' %></style>
+                  <% end %>
+                  </center>
               <% end %>
 
               <hr />
               <div id="reviewmsg">
               <% @post.reviews.order(created_at: :desc).each do |review| %>
 
-                <h3>
-                  <div class="blog_input"><%= review.body %></div>
-                  </h3>
-
-
-                <p>Author: <%= review.user.full_name %></p>
+                <center><p style="font-size: 20px; font-weight:bold; color: blue;"><%= review.body %></p></center>
+                <br>
+                <p>Author: <%= review.user.full_name.titleize %></p>
                 <p><%= review.created_at %></p>
 
-
-                <% if can? :destroy, @post %>
-                <%= link_to 'Delete', post_review_path(@post,review),
-                                      method: :delete,
-                                      data: { confirm: 'Are you freakin sure?🤔' } %>
+                <center>
+                <% if review.user_id == current_user&.id %>
+                <div class="glow pfont" style="color: skyblue; font-weight: bold;">
+                <%= button_to "Delete", post_review_path(@post, review), :method => :delete, data: { confirm: 'Are you freakin sure?🤔' } %>
+              </div>
                 <% end  %>
-                <hr />
+              </center>
+                <hr/>
               <% end %>
               </div>
               </div>

@@ -30,7 +30,6 @@ class PostsController < ApplicationController
     def show
         @post = Post.find params[:id]
         @review = Review.new
-        # @user = User.find_by_id(@review.user_id)
       end
 
     def edit

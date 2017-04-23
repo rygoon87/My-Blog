@@ -1,0 +1,116 @@
+
+<div class="container">
+<div class="col-md-12">
+
+  <center><h1 class="pfont titletext" style="width: 50%;">💡Admin Dashboard💡</h1></center>
+  <hr>
+
+  <div class="col-md-3">
+      <br>
+      <br>
+      <br>
+  <div class="alert alert-info">
+    <center>
+    <p>Number of posts: <strong><%= @posts.count %></strong></p>
+    <hr>
+    <p>Number of reviews: <strong><%= @reviews.count %></strong></p>
+    <hr>
+    <p>Number of users: <strong><%= @users.count %></strong></p>
+    <center>
+    </div>
+  </div>
+
+<div class="col-md-9">
+  <center><h3 class="pfont">Posts</h3>
+
+    <div class="span3">
+    <table class="table table-sm table-hover">
+      <tr>
+        <th>Post ID</th>
+        <th>Post Title</th>
+        <th>Post Created at</th>
+        <th>Number of Reviews</th>
+        <th style="text-align: center;">❌</th>
+      </tr>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= link_to post.title, post_path(post) %></td>
+          <td><%= post.created_at %></td>
+          <td style="text-align: center;"><%= post.reviews.count %> Reviews</td>
+          <td style="text-align: center;">
+            <% if can? :destroy, @post %>
+            <%= link_to 'Delete', post_path(post),
+                                  method: :delete,
+                                  data: { confirm: 'Are you freakin sure?🤔' } %>
+              <% end  %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <hr>
+
+    <h3 class="pfont">Users</h3>
+      <div class="span3">
+    <table class="table table-striped">
+      <tr>
+        <th>User ID</th>
+        <th style="width: 15%; text-align: center;">First Name</th>
+        <th style="text-align: center;">Last Name</th>
+        <th style="text-align: center;">Email</th>
+        <th>User Created At</th>
+        <th>Admin</th>
+        <th style="text-align: center;">❌</th>
+
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td style="text-align: center"><%= link_to  user.first_name.titleize, user_path(user) %></td>
+          <td style="text-align: center"><%= link_to  user.last_name.titleize, user_path(user) %></td>
+          <td style="text-align: center;"><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.is_admin? %></td>
+
+            <% if can? :destroy, @user %>
+              <td style="text-align: center;"><%= link_to 'Delete', admin_users_delete_path(id: user.id), method: :delete, data: { confirm: 'Are you freakin sure?🤔' } %></td>
+            <% end %>
+
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<hr>
+    <h3 class="pfont">Reviews</h3>
+      <div class="span3">
+    <table class="table table-striped">
+      <tr>
+        <th>Review ID</th>
+        <th style="text-align: center">Post Title</th>
+        <th>Review User Name</th>
+        <th>Review Created At:</th>
+        <th style="text-align: center;">❌</th>
+      </tr>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.id %></td>
+          <td style="text-align: center"><%= link_to review.post.title, post_path(review.post) %></td>
+          <td><%= review.user.full_name.titleize %></td>
+          <td><%= review.created_at %></td>
+          <% if can? :destroy, review %>
+            <td style="text-align: center;"><%= link_to 'Delete', admin_reviews_delete_path(id: review.id), method: :delete, data: { confirm: 'Are you freakin sure?🤔' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+    </div>
+<hr>
+
+</center>
+</div>
+
+
+</div>
+</div>

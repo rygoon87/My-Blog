@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :posts, dependent: :nullify
+  has_many :posts, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   validates :first_name, presence: true
    validates :last_name, presence: true
@@ -21,5 +22,7 @@ class User < ApplicationRecord
    def downcase_email
      self.email.downcase! if email.present?
    end
+
+
 
 end

@@ -1,0 +1,37 @@
+<div class="col-md-12">
+  <div class="col-md-3">
+  </div>
+
+  <div class="col-md-6">
+    <center>
+    <h1 class="pfont titletext"><i class="fa fa-user-circle" aria-hidden="true"></i> User Profile Page <i class="fa fa-user-circle" aria-hidden="true"></i></h1>
+    <br>
+  <div class="alert alert-info" style="font-size: 20px;">
+
+          <p><span class="pfont"><i class="fa fa-user" aria-hidden="true"></i> User First Name: </span> <%= @user.first_name %></p>
+            <hr>
+          <p><span class="pfont"><i class="fa fa-user" aria-hidden="true"></i> User Last Name: </span> <%= @user.last_name %></p>
+            <hr>
+          <p><span class="pfont"><i class="fa fa-envelope" aria-hidden="true"></i> User Email: </span> <%= @user.email %></p>
+            <br>
+  </div>
+</center>
+
+            <% if can? :edit, @user %>
+            <div class="pull-left grow pfont" style="color: skyblue; font-weight: bold;">
+            <%= button_to 'Edit User', edit_user_path(@user), :method => :get %>
+          </div>
+            <% end %>
+
+            <% if can? :destroy, @user %>
+            <div class="pull-right grow pfont" style="color: skyblue; font-weight: bold;">
+            <%= button_to "Delete User", user_path(@user), :method => :delete, data: { confirm: 'Are you leaving us?! 😱' } %>
+          </div>
+              <% end  %>
+
+</div>
+
+
+  <div class="col-md-3">
+  </div>
+</div>
