@@ -16,7 +16,7 @@
       <% end %>
       <div class="alert alert-info">
 
-            <%= form_for @post do |f| %>
+            <%= form_for @post, html: { multipart: true } do |f| %>
               <div>
                 <span style="font-size:20px;"><%= f.label :title %>:</span>
                 <br>
@@ -29,6 +29,10 @@
                 <%= f.text_area :body , class:'blog_input', placeholder: 'Write whatever you want here...🤔', size: "45%x20%"%>
               </div>
               <br>
+              <div class="bloginputbox">
+                  <%= f.label :image %>
+                  <%= f.file_field :image %>
+              </div>
               <br>
               <div class="grow pfont">
                 <span style="color:white;"><%= f.submit 'Submit',class:'btn btn-priamry' %></style>

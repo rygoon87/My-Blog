@@ -39,7 +39,10 @@ gem 'faker', github: 'stympy/faker'
 gem 'bootstrap-glyphicons'
 gem "font-awesome-rails"
 gem 'cancancan', '~> 1.10'
+gem 'paperclip', '~> 5.1'
 
+gem 'mail_form'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

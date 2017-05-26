@@ -59,8 +59,11 @@
         <th style="width: 15%; text-align: center;">First Name</th>
         <th style="text-align: center;">Last Name</th>
         <th style="text-align: center;">Email</th>
-        <th>User Created At</th>
+        <th style="width: 20%;">User Created At</th>
         <th>Admin</th>
+        <th style="width: 15%;">Toggle Admin</th>
+
+
         <th style="text-align: center;">❌</th>
 
       </tr>
@@ -72,6 +75,9 @@
           <td style="text-align: center;"><%= user.email %></td>
           <td><%= user.created_at %></td>
           <td><%= user.is_admin? %></td>
+          <td>
+            <%= link_to 'toggle', user_path(user, user: {is_admin: !user.is_admin}), method: :patch, data: { confirm: 'Are you freakin sure?🤔' }, class: 'btn btn-danger' %>
+          </td>
 
             <% if can? :destroy, @user %>
               <td style="text-align: center;"><%= link_to 'Delete', admin_users_delete_path(id: user.id), method: :delete, data: { confirm: 'Are you freakin sure?🤔' } %></td>

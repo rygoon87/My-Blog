@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @likes = Like.where(user: current_user).order(created_at: :DESC)
   end
 
 
@@ -30,7 +31,13 @@ class UsersController < ApplicationController
   def update
 
     @user = User.find params[:id]
-    user_params = params.require(:user).permit([:first_name, :last_name, :email, :password ])
+
+
+    if current_user.is_admin
+      user_params = params.require(:user).permit([:first_name, :last_name, :email, :password, :is_admin ])
+    else
+      user_params = params.require(:user).permit([:first_name, :last_name, :email, :password])
+    end
 
     if !(can? :edit, @user)
       redirect_to root_path, alert: 'Access denied☠️'
@@ -39,6 +46,13 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def admin_edit
+    @user = User.find(params[:id])
+    user_params = params.require(:user).permit([:is_admin ])
+    @user.toggle!(:is_admin)
+    redirect_to admin_dashboard_index_path, alert: 'Access denied☠️'
   end
 
 

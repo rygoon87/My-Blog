@@ -5,10 +5,15 @@
   <!-- last blog post -->
   <div class="col-md-8">
     <a href="<%= post_path(@last_post) %>" style="text-decoration: none;">
-    <img src="<%= asset_path( 'img13.jpg' ) %>" class="blog-img img-responsive img-rounded blogimg"/></a>
+    <center><%= link_to image_tag(@last_post.image.url(:medium), class: 'img-responsive img-rounded blogimg'), post_path(@last_post) %></center>
     <div class="container-fluid">
-    <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true">
-    <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
+
+    <% like = @last_post.likes.find_by(user: current_user) %>
+
+    <span class="pfont pull-left" style="font-size: 20px;"><%= pluralize(@last_post.likes.count, 'Like') %></span>
+
+
+    <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
     </div>
     <a href="<%= post_path(@last_post) %>" style="text-decoration: none;">
     <div class="alert alert-info">
@@ -33,12 +38,14 @@
 
     <div class="list-group" id="mostlike">
       <div class="list-group-item list-group-item-action flex-column align-items-start" >
-      <% @posts.each do |post| %>
+      <% @mostlike.each do |post| %>
 
               <a href="<%= post_path(post) %>" style="text-decoration: none;">
                   <center><h2>
                     <p class="pfont titletext"><%= post.title %></p>
-                    <div class="fa fa-plane" style="color: SkyBlue; font-size: 20px;" aria-hidden="true"><span style="color:black; font-size: 20px; font-weight: bold;"><%= rand(100..999) %></span></div>
+                    <div class="fa fa-plane" style="color: SkyBlue; font-size: 20px;" aria-hidden="true">
+                      <span class="pfont" style="font-size: 20px;">&nbsp<%= pluralize(post.likes.count, 'Like') %></span>
+                    </div>
                   </h2></center>
 
                   <p style="color:black;"><%= truncate( post.body, length: 150) %></p>
@@ -71,7 +78,8 @@
           <img class = "img-responsive img-rounded blogimg" src = "assets/<%= image %>"></a>
 
           <div class="container-fluid">
-          <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true"><span style="color:black; font-size: 30px; font-weight: bold;"><%= rand(100..999) %></span></span>
+          <span class="pfont pull-left" style="font-size: 20px;"><%= pluralize(post.likes.count, 'Like') %></span>
+
           <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
           </div>
           <a href="<%= post_path(post) %>" style="text-decoration: none;">

@@ -15,6 +15,15 @@ class Ability
 
       can [:show, :destroy, :edit], User, :id => user.id
 
+
+      can :like, Post do |p|
+      user != p.user
     end
+
+    cannot :like, Post do |p|
+      user == p.user
+    end
+
+  end
 
 end

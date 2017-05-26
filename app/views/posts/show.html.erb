@@ -8,9 +8,27 @@
       <center><h1 class="pfont titletext"><%= @post.title %></h1></center>
       <br>
       <img src="<%= asset_path( 'img15.jpg' ) %>" class="img-responsive img-rounded blogimg"/>
+      <%= link_to image_tag(@post.image.url(:medium)), post_path(@post) %>
         <div class="container-fluid">
-        <span class="fa fa-plane grow pull-left" style="color: SkyBlue; font-size: 30px;" aria-hidden="true">
-        <span style="color:black; font-size: 30px; font-weight: bold;">483</span></span><span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
+
+          <% like = @post.likes.find_by(user: current_user) %>
+
+          <div class="likesign pull-left">
+            <% if user_signed_in? %>
+              <% if like.present? %>
+              <%= link_to fa_icon('rocket'), post_like_path(@post, like), method: :delete %>
+              <% else %>
+                <%= link_to fa_icon("plane"), post_likes_path(@post), method: :post %>
+              <% end %>
+            <% end %>
+          </div>
+          <span class="pfont pull-left" style="font-size: 25px;">&nbsp&nbsp<%= pluralize(@post.likes.count, 'Like') %></span>
+
+
+
+
+
+        <span class="glyphicon glyphicon-bookmark pull-right grow" style="color: SkyBlue; font-size: 25px;" aria-hidden="true"></span>
         </div>
           <div class="alert alert-info">
           <center><p style="font-size: 15px; font-weight: bold;"><%= @post.body %></p></center>
@@ -70,7 +88,7 @@
                 <p><%= review.created_at %></p>
 
                 <center>
-                <% if review.user_id == current_user&.id %>
+                Do
                 <div class="glow pfont" style="color: skyblue; font-weight: bold;">
                 <%= button_to "Delete", post_review_path(@post, review), :method => :delete, data: { confirm: 'Are you freakin sure?🤔' } %>
               </div>

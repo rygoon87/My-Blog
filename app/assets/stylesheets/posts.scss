@@ -123,3 +123,11 @@ th {
 .modalbox{
   text-align: center;
 }
+
+.likesign{
+  font-size: 25px;
+  color: skyblue;
+  transition: all .2s ease-in-out;
+}
+
+.likesign:hover { transform: scale(2.1); }
